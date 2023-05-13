@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class Ventana extends JFrame {
 
@@ -25,39 +26,37 @@ public class Ventana extends JFrame {
         super(title);
         this.setSize(400, 400);
         setLayout(new FlowLayout());
-        lblNombre = new JLabel("Ingresa un nombre:");
+        lblNombre =  new JLabel("Ingresa un nombre");
         this.getContentPane().add(lblNombre);
         txtNombre = new JTextField(30);
         this.getContentPane().add(txtNombre);
         boton = new JButton("Agregar");
         this.getContentPane().add(boton);
-        //Configurar el modelo
-
+        // configurar el modelo
         modelo = new NombreModelo();
         modelo.agregarNombre("Diana");
         modelo.agregarNombre("Diego");
         modelo.agregarNombre("Susana");
-
         combo = new JComboBox(modelo);
         this.getContentPane().add(combo);
         this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-
+        
         boton.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mouseClicked(MouseEvent e){
                 String nuevo = txtNombre.getText();
                 modelo.agregarNombre(nuevo);
                 txtNombre.setText("");
             }
         });
-        combo.addActionListener(new AbstractAction() {
+        combo.addActionListener(new AbstractAction(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println(combo.getSelectedIndex());
                 System.out.println(combo.getSelectedItem());
-                JOptionPane.showMessageDialog(null, "hola" + combo.getSelectedItem());
-            }
+                JOptionPane.showMessageDialog(null, "Hola " + combo.getSelectedItem());
+            }        
         });
     }
 
