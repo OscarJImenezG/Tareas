@@ -5,6 +5,7 @@ import javax.swing.ComboBoxModel;
 import javax.swing.event.ListDataListener;
 
 public class NombreModelo implements ComboBoxModel {
+
     ArrayList<String> datos;
     String selected;
 
@@ -14,9 +15,7 @@ public class NombreModelo implements ComboBoxModel {
 
     public NombreModelo(ArrayList<String> datos) {
         this.datos = datos;
-    
     }
-    
 
     @Override
     public void setSelectedItem(Object anItem) {
@@ -30,26 +29,25 @@ public class NombreModelo implements ComboBoxModel {
 
     @Override
     public int getSize() {
-        return datos.hashCode();
+        return datos.size();
     }
 
     @Override
     public Object getElementAt(int index) {
-        return null;
+        return datos.get(index);
     }
 
     @Override
     public void addListDataListener(ListDataListener l) {
-        
+
     }
 
     @Override
     public void removeListDataListener(ListDataListener l) {
-        
-    }
-    
-    public void agregarNombre(String nom){
-        datos.add(nom);
+
     }
 
+    public void agregarNombre(String nom) {
+        datos.add(nom);
+    }
 }
